@@ -6,6 +6,7 @@ use ieee.std_logic_unsigned.all;
 entity binary_counter is
   Port (clk: in std_logic;
         rst: in std_logic;
+        stop: in std_logic;
         output: out std_logic_vector(3 downto 0));
 end binary_counter;
 
@@ -20,6 +21,8 @@ begin
         if rst='1'then
             qtemp <= "0000";
             count <= 0;
+        elsif stop ='1'then
+            qtemp <= qtemp;    
         elsif(count<9)then
             qtemp <= qtemp + 1;
             count <= count +1;

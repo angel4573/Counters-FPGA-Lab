@@ -6,6 +6,7 @@ use ieee.std_logic_unsigned.all;
 entity fibonacci_counter is
   Port (clk: in std_logic;
         rst: in std_logic;
+        stop: in std_logic;
         output: out std_logic_vector(3 downto 0));
 end fibonacci_counter;
 
@@ -21,6 +22,9 @@ begin
         if rst ='1'then 
             current_fib <=(others => '0');
             next_fib <= "0001";
+    elsif stop ='1'then
+            current_fib <= current_fib;
+            next_fib <= next_fib;
     elsif (count = 7 )then  
         next_fib <= "0001";
         current_fib <="0000";

@@ -18,8 +18,8 @@ if (rising_edge(clk))then
     if(rst='1')then
         clk_tmp <= '0';
         count <= count + 1;
-    elsif (count = 10)then --used for testbench purposes    
-    --elsif (count = 62499999)then
+    --elsif (count = 10)then --used for testbench purposes    
+    elsif (count = 62499999)then
         clk_tmp <= not clk_tmp;
         count <= 0;
     else
